@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d0b">
+<title>EB DO LNK | Painel Militar</title>
+<style>
+:root{--bg:#080d0b;--panel:#101916;--panel2:#141f1a;--green:#19e889;--green2:#087b4b;--muted:#9aaca3;--line:#176b48;--white:#edf7f1}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#14251c 0,#080d0b 55%);color:var(--white);font:14px Inter,system-ui,Arial,sans-serif;min-height:100vh}
+header{height:58px;display:flex;align-items:center;gap:13px;padding:0 16px;border-bottom:1px solid #183629;background:#0b110e;position:sticky;top:0;z-index:5}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.7px}.logo{width:34px;height:34px;border-radius:11px;background:linear-gradient(145deg,#21f59a,#08784a);display:grid;place-items:center;color:#04140c;font-weight:1000;box-shadow:0 0 18px #12d77b55}
+.menu-btn{background:none;border:0;color:white;font-size:22px;cursor:pointer}.spacer{flex:1}.online{font-size:11px;color:var(--green);border:1px solid #176b48;border-radius:20px;padding:7px 10px}
+main{max-width:1050px;margin:auto;padding:18px 14px 95px}.hero,.card{background:linear-gradient(145deg,#142019,#0d1411);border:1px solid #176b48;border-radius:17px;padding:18px;margin-bottom:14px;box-shadow:0 10px 35px #0005}
+.eyebrow{font-size:10px;letter-spacing:1.7px;color:var(--green);font-weight:900}.hero h1{font-size:27px;margin:9px 0}.hero p,.muted{color:var(--muted);line-height:1.65}.btn{border:0;border-radius:10px;padding:12px 16px;background:linear-gradient(90deg,#0cc878,#27f39a);color:#04150d;font-weight:900;cursor:pointer;width:100%;margin-top:10px}.btn.secondary{background:#182820;color:var(--white);border:1px solid #276244}.section-title{font-size:17px;margin:20px 2px 10px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.tile{background:#111b16;border:1px solid #254936;border-radius:13px;padding:15px;cursor:pointer}.tile b{display:block;margin:7px 0}.tile span{color:var(--muted);font-size:12px;line-height:1.45}.ico{font-size:20px;color:var(--green)}.row{display:flex;align-items:center;gap:12px}.avatar{width:54px;height:54px;border-radius:50%;background:#1b3a29;border:2px solid var(--green);display:grid;place-items:center;font-size:23px}
+input{width:100%;padding:13px;border-radius:10px;background:#080e0b;border:1px solid #286044;color:white;outline:none;margin:8px 0}input:focus{border-color:var(--green)}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#0b120f;border-top:1px solid #1c5037;display:flex;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:6}.bottom button{background:none;border:0;color:#a9b8af;font-size:10px;display:grid;gap:4px;justify-items:center;cursor:pointer}.bottom button strong{font-size:19px}.bottom button.active{color:var(--green)}
+.drawer{position:fixed;inset:0;z-index:10;background:#0009;display:none}.drawer.open{display:block}.side{width:min(310px,84vw);height:100%;overflow:auto;background:#0c1510;border-right:1px solid #216341;padding:17px}.sidehead{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.side button{width:100%;text-align:left;background:#142019;border:1px solid #1d4932;color:white;padding:12px;border-radius:10px;margin:4px 0;cursor:pointer}.side button:hover,.tile:hover{border-color:var(--green)}
+.page{display:none}.page.active{display:block}.notice{border:1px dashed #26774c;background:#102219;border-radius:12px;padding:14px;color:#b8d9c6;font-size:12px;line-height:1.6}
+.sale-category{margin:18px 0 9px;color:var(--green);font-size:13px;letter-spacing:1px;font-weight:900}.sale-card{background:#111b16;border:1px solid #254936;border-radius:13px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}.sale-card b{display:block}.sale-price{color:var(--green);font-weight:900;font-size:15px;white-space:nowrap}.buy-btn{border:1px solid #218653;background:#123523;color:#dfffee;border-radius:9px;padding:9px 11px;font-weight:800;cursor:pointer;margin-top:8px}.sale-list{display:grid;gap:9px}.sales-tabs{display:flex;gap:9px;margin:14px 0}.sales-tab{flex:1;border:1px solid #276244;background:#142019;color:#edf7f1;border-radius:10px;padding:12px 8px;font-weight:900;cursor:pointer}.sales-tab.active{background:linear-gradient(90deg,#0cc878,#27f39a);color:#04150d;border-color:#19e889}
+footer{text-align:center;color:#60746a;font-size:11px;padding:15px}
+@media(min-width:700px){main{padding-top:28px}.hero{padding:26px}.hero h1{font-size:34px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.bottom{max-width:700px;left:50%;transform:translateX(-50%);border:1px solid #1c5037;border-radius:16px 16px 0 0}}
+</style>
+</head>
+<body>
+<header><button class="menu-btn" onclick="drawer(true)" aria-label="Abrir menu">☰</button><div class="brand"><div class="logo">LNK</div><span>EB DO LNK</span></div><div class="spacer"></div><span class="online">● PAINEL ONLINE</span></header>
+<main>
+<section class="page active" id="inicio">
+<div class="hero"><div class="eyebrow">PAINEL OFICIAL • EXÉRCITO BRASILEIRO</div><h1>O quartel inteiro na palma da sua mão.</h1><p>Bem-vindo ao painel do <b>EB DO LNK</b>. Acesse informações, acompanhe sua carreira e utilize os recursos administrativos em um só lugar.</p><button class="btn" onclick="showPage('perfil')">Acessar meu perfil →</button><div class="notice" style="margin-top:14px">✦ <b>Central EB DO LNK</b><br>Consulte as opções disponíveis no menu e mantenha seus dados atualizados.</div></div>
+<h2 class="section-title">Acesso rápido</h2><div class="grid">
+<div class="tile" onclick="showPage('perfil')"><div class="ico">♙</div><b>Meu Perfil</b><span>Visualize suas informações e progresso.</span></div>
+<div class="tile" onclick="showPage('loja')"><div class="ico">▣</div><b>Código</b><span>Resgate códigos disponíveis.</span></div>
+<div class="tile" onclick="showPage('vendas')"><div class="ico">🛒</div><b>Venda de Cargos</b><span>Consulte cargos disponíveis e preços.</span></div>
+<div class="tile" onclick="showPage('registros')"><div class="ico">▤</div><b>Registros</b><span>Acompanhe avisos e registros.</span></div>
+<div class="tile" onclick="showPage('divisoes')"><div class="ico">⬡</div><b>Divisões</b><span>Conheça as divisões do EB.</span></div>
+<div class="tile" onclick="showPage('ajuda')"><div class="ico">?</div><b>Ajuda</b><span>Informações e suporte.</span></div>
+</div></section>
+<section class="page" id="perfil"><h2 class="section-title">Meu Perfil</h2><div class="card"><div class="row"><div class="avatar">♙</div><div><b id="discordProfileName">Perfil não verificado</b><div class="muted" id="discordProfileStatus">Conecte sua conta Discord para verificar seu perfil</div></div></div><hr style="border-color:#244533;margin:18px 0"><p class="muted">Vincule sua conta Discord para confirmar sua identidade no EB DO LNK.</p><button class="btn" id="discordVerifyBtn" onclick="connectDiscord()">✓ Verifique-se com o Discord</button><p class="muted" id="discordAuthMessage" aria-live="polite">Você será encaminhado à página oficial do Discord para autorizar a conexão.</p><div class="notice">🔐 O site nunca solicita sua senha do Discord. A autorização acontece diretamente no domínio oficial discord.com. A autenticação é validada por um servidor seguro.</div><button class="btn secondary" onclick="logoutDiscord()">Sair da conta Discord</button></div><div class="card"><b>Conquistas</b><p class="muted">Suas conquistas aparecerão aqui conforme forem liberadas pela administração.</p></div></section>
+
+<section class="page" id="loja"><h2 class="section-title">Código</h2><div class="card"><div class="eyebrow">CENTRAL DE RESGATE</div><h2>Resgatar código</h2><p class="muted">Digite seu código no campo abaixo.</p><input id="code" placeholder="Cole ou digite o código"><button class="btn" onclick="redeem()">♧ Resgatar</button><p id="codeMsg" class="muted"></p></div><div class="card"><b>Meus resgates</b><p class="muted">Seus resgates aparecerão aqui quando o sistema estiver conectado.</p></div></section>
+<section class="page" id="vendas">
+<h2 class="section-title">Código de Cargos</h2>
+<div class="card"><div class="eyebrow">LOJA OFICIAL • EB DO LNK</div><h2>Adquira seu cargo</h2><p class="muted">Confira as categorias, escolha o cargo desejado e consulte o valor correspondente.</p><div class="notice">⚠️ Os valores estão apresentados conforme a tabela informada. A compra e a liberação do cargo devem ser confirmadas pela administração. Este site ainda não processa pagamentos.</div></div>
+<div class="sales-tabs"><button class="sales-tab active" id="tabCargos" onclick="switchSalesTab('cargos')">Cargos</button><button class="sales-tab" id="tabDivisional" onclick="switchSalesTab('divisional')">Patente Divisional</button></div>
+<div id="cargosTabContent">
+<div class="sale-category">SUPREMACIA</div><div class="sale-list">
+<div class="sale-card"><div><b>Marechal</b><span class="sale-price">R$ 249,90</span></div><button class="buy-btn" onclick="requestPurchase('Marechal','249,90')">Solicitar</button></div>
+<div class="sale-card"><div><b>Vice-Presidente</b><span class="sale-price">R$ 156,80</span></div><button class="buy-btn" onclick="requestPurchase('Vice-Presidente','156,80')">Solicitar</button></div></div>
+<div class="sale-category">OFICIAIS DE ELITE</div><div class="sale-list">
+<div class="sale-card"><div><b>Elite comandos</b><span class="sale-price">R$ 127,76</span></div><button class="buy-btn" onclick="requestPurchase('Elite comandos','127,76')">Solicitar</button></div>
+<div class="sale-card"><div><b>Elite Divisional</b><span class="sale-price">R$ 122,00</span></div><button class="buy-btn" onclick="requestPurchase('Elite Divisional','122,00')">Solicitar</button></div>
+<div class="sale-card"><div><b>Elite de operações</b><span class="sale-price">R$ 119,90</span></div><button class="buy-btn" onclick="requestPurchase('Elite de operações','119,90')">Solicitar</button></div></div>
+<div class="sale-category">GENERAIS</div><div class="sale-list">
+<div class="sale-card"><div><b>General de Exército</b><span class="sale-price">R$ 112,80</span></div><button class="buy-btn" onclick="requestPurchase('General de Exército','112,80')">Solicitar</button></div>
+<div class="sale-card"><div><b>General de Divisão</b><span class="sale-price">R$ 107,90</span></div><button class="buy-btn" onclick="requestPurchase('General de Divisão','107,90')">Solicitar</button></div>
+<div class="sale-card"><div><b>General de Brigada</b><span class="sale-price">R$ 97,90</span></div><button class="buy-btn" onclick="requestPurchase('General de Brigada','97,90')">Solicitar</button></div></div>
+<div class="sale-category">SUPERIORES</div><div class="sale-list">
+<div class="sale-card"><div><b>Coronel</b><span class="sale-price">R$ 58,00</span></div><button class="buy-btn" onclick="requestPurchase('Coronel','58,00')">Solicitar</button></div>
+<div class="sale-card"><div><b>Tenente Coronel</b><span class="sale-price">R$ 46,80</span></div><button class="buy-btn" onclick="requestPurchase('Tenente Coronel','46,80')">Solicitar</button></div>
+<div class="sale-card"><div><b>Major</b><span class="sale-price">R$ 38,60</span></div><button class="buy-btn" onclick="requestPurchase('Major','38,60')">Solicitar</button></div></div>
+<div class="sale-category">INTERMEDIÁRIO</div><div class="sale-list">
+<div class="sale-card"><div><b>Capitão</b><span class="sale-price">R$ 36,00</span></div><button class="buy-btn" onclick="requestPurchase('Capitão','36,00')">Solicitar</button></div></div>
+<div class="sale-category">OFICIAIS</div><div class="sale-list">
+<div class="sale-card"><div><b>Primeiro Tenente</b><span class="sale-price">R$ 28,50</span></div><button class="buy-btn" onclick="requestPurchase('Primeiro Tenente','28,50')">Solicitar</button></div>
+<div class="sale-card"><div><b>Segundo Tenente</b><span class="sale-price">R$ 27,90</span></div><button class="buy-btn" onclick="requestPurchase('Segundo Tenente','27,90')">Solicitar</button></div>
+<div class="sale-card"><div><b>Aspirante a Oficial</b><span class="sale-price">R$ 25,30</span></div><button class="buy-btn" onclick="requestPurchase('Aspirante a Oficial','25,30')">Solicitar</button></div></div>
+<div class="sale-category">A.M.A.N</div><div class="sale-list">
+<div class="sale-card"><div><b>Cadete</b><span class="sale-price">R$ 24,00</span></div><button class="buy-btn" onclick="requestPurchase('Cadete','24,00')">Solicitar</button></div></div>
+<div class="sale-category">GRADUADOS</div><div class="sale-list">
+<div class="sale-card"><div><b>Subtenente</b><span class="sale-price">R$ 19,00</span></div><button class="buy-btn" onclick="requestPurchase('Subtenente','19,00')">Solicitar</button></div>
+<div class="sale-card"><div><b>1° Sargento</b><span class="sale-price">R$ 15,90</span></div><button class="buy-btn" onclick="requestPurchase('1° Sargento','15,90')">Solicitar</button></div>
+<div class="sale-card"><div><b>2° Sargento</b><span class="sale-price">R$ 13,80</span></div><button class="buy-btn" onclick="requestPurchase('2° Sargento','13,80')">Solicitar</button></div>
+<div class="sale-card"><div><b>3° Sargento</b><span class="sale-price">R$ 12,00</span></div><button class="buy-btn" onclick="requestPurchase('3° Sargento','12,00')">Solicitar</button></div></div>
+</div>
+<div id="divisionalTabContent" style="display:none">
+<div class="card"><div class="eyebrow">PATENTES DIVISIONAIS</div><h2>Escolha uma divisão</h2><p class="muted">Selecione uma das opções disponíveis abaixo.</p></div>
+<div class="sale-list">
+<div class="sale-card"><div><b>Brigada de Infantaria Paraquedista</b></div><button class="buy-btn" onclick='requestDivisional("Brigada de Infantaria Paraquedista")'>Selecionar</button></div>
+<div class="sale-card"><div><b>Rec Mec Cavalaria Mecanizada</b></div><button class="buy-btn" onclick='requestDivisional("Rec Mec Cavalaria Mecanizada")'>Selecionar</button></div>
+<div class="sale-card"><div><b>Centro de Instrução de Guerra na Selva</b></div><button class="buy-btn" onclick='requestDivisional("Centro de Instrução de Guerra na Selva")'>Selecionar</button></div>
+<div class="sale-card"><div><b>Comando de Inteligência e Defesa Cibernética</b></div><button class="buy-btn" onclick='requestDivisional("Comando de Inteligência e Defesa Cibernética")'>Selecionar</button></div>
+<div class="sale-card"><div><b>Batalhão de Ações de Comandos</b></div><button class="buy-btn" onclick='requestDivisional("Batalhão de Ações de Comandos")'>Selecionar</button></div>
+<div class="sale-card"><div><b>Batalhão de Forças Especiais</b></div><button class="buy-btn" onclick='requestDivisional("Batalhão de Forças Especiais")'>Selecionar</button></div>
+<div class="sale-card"><div><b>Pelotão de Fuzilaria Naval</b></div><button class="buy-btn" onclick='requestDivisional("Pelotão de Fuzilaria Naval")'>Selecionar</button></div>
+<div class="sale-card"><div><b>Pelotão de Fuzilaria Aeronáutica</b></div><button class="buy-btn" onclick='requestDivisional("Pelotão de Fuzilaria Aeronáutica")'>Selecionar</button></div>
+<div class="sale-card"><div><b>Batalhão de Polícia do Exército</b></div><button class="buy-btn" onclick='requestDivisional("Batalhão de Polícia do Exército")'>Selecionar</button></div>
+</div>
+</div>
+</section>
+<section class="page" id="registros"><h2 class="section-title">Registro de Ações</h2><div class="card"><b>Histórico do painel</b><p class="muted">Os registros administrativos serão exibidos nesta área após a integração com o sistema oficial.</p><div class="notice">Nenhum registro disponível nesta demonstração.</div></div></section>
+<section class="page" id="divisoes"><h2 class="section-title">Divisões</h2><div class="grid"><div class="tile"><div class="ico">⬡</div><b>Divisão Administrativa</b><span>Organização e apoio interno.</span></div><div class="tile"><div class="ico">⬡</div><b>Divisão de Treinamento</b><span>Formação e instrução dos membros.</span></div><div class="tile"><div class="ico">⬡</div><b>Divisão Operacional</b><span>Atividades e operações.</span></div></div></section>
+<section class="page" id="ajuda"><h2 class="section-title">Ajuda e Suporte</h2><div class="card"><b>Precisa de ajuda?</b><p class="muted">Entre em contato com a administração do EB DO LNK pelos canais oficiais da instituição.</p><div class="notice">Este site é um modelo demonstrativo e não está conectado a sistemas oficiais ou contas de usuários.</div></div></section>
+<footer>EB DO LNK • Painel demonstrativo</footer>
+</main>
+<nav class="bottom"><button class="active" data-page="inicio" onclick="showPage('inicio')"><strong>⌂</strong>Início</button><button data-page="perfil" onclick="showPage('perfil')"><strong>♙</strong>Perfil</button><button data-page="loja" onclick="showPage('loja')"><strong>✧</strong>Código</button><button data-page="vendas" onclick="showPage('vendas')"><strong>🛒</strong>Vendas</button><button onclick="drawer(true)"><strong>☰</strong>Menu</button></nav>
+<div class="drawer" id="drawer" onclick="if(event.target===this)drawer(false)"><aside class="side"><div class="sidehead"><div class="brand"><div class="logo">LNK</div>EB DO LNK</div><button style="width:auto;margin:0" onclick="drawer(false)">✕</button></div><p class="eyebrow">NAVEGAÇÃO</p><button onclick="go('inicio')">⌂　Início</button><button onclick="go('perfil')">♙　Meu Perfil</button><button onclick="go('loja')">✧　Código</button><button onclick="go('vendas')">🛒　Venda de Cargos</button><button onclick="go('registros')">▤　Registro de Ações</button><button onclick="go('divisoes')">⬡　Divisões</button><button onclick="go('ajuda')">?　Ajuda e Suporte</button><div class="notice" style="margin-top:16px">EB DO LNK<br>Organização • Disciplina • Respeito</div></aside></div>
+<script>
+async function connectDiscord(){
+  document.getElementById('discordAuthMessage').textContent='Abrindo a autorização segura do Discord...';
+  window.location.href='/auth/discord';
+}
+async function loadDiscordProfile(){
+  const name=document.getElementById('discordProfileName');
+  const status=document.getElementById('discordProfileStatus');
+  const button=document.getElementById('discordVerifyBtn');
+  const message=document.getElementById('discordAuthMessage');
+  try{
+    const response=await fetch('/api/me',{credentials:'same-origin'});
+    if(!response.ok) throw new Error('Não foi possível consultar a sessão.');
+    const data=await response.json();
+    if(data.user){
+      name.textContent=data.user.global_name || data.user.username;
+      status.textContent='Perfil verificado • Discord conectado';
+      message.textContent='Sua conta Discord foi conectada com sucesso.';
+      button.textContent='✓ Discord conectado';
+      button.disabled=true;
+      button.style.opacity='.7';
+      const avatar=document.querySelector('.avatar');
+      if(data.user.avatar){
+        avatar.innerHTML='<img alt="Avatar do Discord" style="width:100%;height:100%;border-radius:50%;object-fit:cover" src="https://cdn.discordapp.com/avatars/'+encodeURIComponent(data.user.id)+'/'+encodeURIComponent(data.user.avatar)+'.png?size=128">';
+      } else { avatar.textContent=(data.user.username||'D').charAt(0).toUpperCase(); }
+    } else {
+      name.textContent='Perfil não verificado';
+      status.textContent='Conecte sua conta Discord para verificar seu perfil';
+      button.disabled=false;
+    }
+  }catch(error){
+    message.textContent='Não foi possível consultar o servidor de login. Verifique se o backend está publicado.';
+  }
+}
+async function logoutDiscord(){
+  await fetch('/auth/logout',{method:'POST',credentials:'same-origin'});
+  location.reload();
+}
+(function(){
+  const params=new URLSearchParams(location.search);
+  const result=params.get('login');
+  if(result==='success') history.replaceState({},document.title,location.pathname+location.hash);
+  if(result==='error'){
+    document.getElementById('discordAuthMessage').textContent='Não foi possível concluir o login. Tente novamente.';
+    history.replaceState({},document.title,location.pathname+location.hash);
+  }
+  loadDiscordProfile();
+})();
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.bottom button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo(0,0)}
+function drawer(open){document.getElementById('drawer').classList.toggle('open',open)}
+function go(id){showPage(id);drawer(false)}
+function redeem(){let v=document.getElementById('code').value.trim();document.getElementById('codeMsg').textContent=v?'Este modelo ainda não está conectado a um sistema de validação de códigos.':'Digite um código antes de continuar.'}
+function requestPurchase(cargo,preco){alert('Solicitação de compra: '+cargo+' — R$ '+preco+'. Entre em contato com a administração do EB DO LNK para confirmar a compra e a liberação do cargo.');}
+function switchSalesTab(tab){
+ const cargos=tab==='cargos';
+ document.getElementById('cargosTabContent').style.display=cargos?'block':'none';
+ document.getElementById('divisionalTabContent').style.display=cargos?'none':'block';
+ document.getElementById('tabCargos').classList.toggle('active',cargos);
+ document.getElementById('tabDivisional').classList.toggle('active',!cargos);
+}
+function requestDivisional(nome){alert('Divisão selecionada: '+nome+'. Entre em contato com a administração do EB DO LNK para confirmar sua solicitação.');}
+</script>
+</body></html>
